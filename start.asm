@@ -75,6 +75,13 @@ start:
     mov ah,0x0e
     mov al,"e"
     int 0x10
+    mov al,0x0d
+    int 0x10
+    mov al,0x0a
+    int 0x10
+    mov ah,0x0e
+    mov al,">"
+    int 0x10
     loop:
     mov ah,0x10
     int 0x16
@@ -111,3 +118,4 @@ right_arrow:
     mov ah,0x02
     int 0x10
     jmp loop
+times 1474560-($-$$) db 0
