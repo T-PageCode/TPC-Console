@@ -91,14 +91,19 @@ start:
     je left_arrow
     cmp ah,0x4d
     je right_arrow
+    cmp ah,0x1c
+    je enter_key
     mov ah,0x0e
     int 0x10
     jmp loop
 backspace:
+    mov ah,0x0e
     mov al,0x08
     int 0x10
+    mov ah,0x0e
     mov al,0x20
     int 0x10
+    mov ah,0x0e
     mov al,0x08
     int 0x10
     jmp loop
@@ -116,6 +121,17 @@ right_arrow:
     int 0x10
     inc dl
     mov ah,0x02
+    int 0x10
+    jmp loop
+enter_key:
+    mov ah,0x0e
+    mov al,0x0d
+    int 0x10
+    mov ah,0x0e
+    mov al,0x0a
+    int 0x10
+    mov ah,0x0e
+    mov al,">"
     int 0x10
     jmp loop
 times 1474560-($-$$) db 0
