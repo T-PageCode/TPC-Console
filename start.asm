@@ -83,7 +83,7 @@ start:
     mov al,">"
     int 0x10
     loop:
-    mov ah,0x10
+    mov ah,0x00
     int 0x16
     cmp al,0x08
     je backspace
